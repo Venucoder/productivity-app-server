@@ -13,6 +13,11 @@ const MONGODB_URI = process.env.MONGODB_URI;
 
 /* Allowing the frontend to access the backend. */
 app.use(cors());
+app.use(function (req, res, next) {
+   res.header("Access-Control-Allow-Origin", "*");
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+   next();
+})
 
 /* Telling the application to use the express.json() middleware. This middleware will parse the body of
   any request that has a Content-Type of application/json. */
